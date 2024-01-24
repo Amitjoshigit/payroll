@@ -44,10 +44,17 @@ EMPLOYEE_ATTRIBUTES:
       - Hours
   CTC:
     type: number
-  address_line1:
-    type: string
-  address_line2:
-    type: string
+  Address:
+    type: object
+    properties:
+      Line1:
+        type: string
+      Line2:
+        type: string
+  # address_line1:
+  #   type: string
+  # address_line2:
+  #   type: string
   differently_abled:
     type: string
     

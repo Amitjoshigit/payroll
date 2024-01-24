@@ -11,7 +11,7 @@ def validate_uploaded_excel(upload_file: UploadFile):
         df = pd.read_excel(io.BytesIO(content), engine='openpyxl')
 
         # Define the required columns
-        required_columns = ["fname", "mname", "lname", "emp_id", "designation", "department", "email_id", "phone_number", "date_of_joining"]
+        required_columns = ["First_Name", "Middle_Name", "Last_Name", "emp_id", "designation", "department", "email_id", "phone_number", "date_of_joining"]
 
         # Check for missing columns
         missing_columns = [col for col in required_columns if col not in df.columns]

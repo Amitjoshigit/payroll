@@ -21,7 +21,7 @@ async def download_template():
         # Create an Excel template with the required columns
         workbook = openpyxl.Workbook()
         sheet = workbook.active
-        required_columns = ["fname", "mname", "lname", "emp_id", "designation", "department", "email_id", "phone_number", "date_of_joining"]
+        required_columns = ["First_Name", "Middle_Name", "Last_Name", "emp_id", "designation", "department", "email_id", "phone_number", "date_of_joining"]
         for col_num, header in enumerate(required_columns, 1):
             sheet.cell(row=1, column=col_num, value=header)
 
