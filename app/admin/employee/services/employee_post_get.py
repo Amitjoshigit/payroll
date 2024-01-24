@@ -1,5 +1,6 @@
 from fastapi import APIRouter, HTTPException
 from fastapi.responses import JSONResponse
+# from ..schema.employee import Employee
 
 from bson import ObjectId
 import json
@@ -36,9 +37,18 @@ async def read_employee(employee_id: str):
     else:
         raise HTTPException(status_code=404, detail="Employee not found")
 
+# @router.get("/", response_model=list)
+# async def read_employees(skip: int = 0, limit: int = 10):
+#     employees = collection.find().skip(skip).limit(limit)
+#     return JSONResponse(content=json.loads(json_encoder.encode(list(employees))), status_code=200)
+
 @router.get("/", response_model=list)
-async def read_employees(skip: int = 0, limit: int = 10):
-    employees = collection.find().skip(skip).limit(limit)
+async def read_employees(skip: int = 0, limit: int = None):
+    if limit is None:
+        employees = collection.find().skip(skip)
+    else:
+        employees = collection.find().skip(skip).limit(limit)
+    
     return JSONResponse(content=json.loads(json_encoder.encode(list(employees))), status_code=200)
 
 @router.put("{employee_id}", response_model=dict)
