@@ -1,0 +1,137 @@
+{    
+    "minimum_wage": 10000,
+    "allowance": [
+      {
+        "grade": "g1.0",
+        "designation": "Intern",
+        "food_allowance": 0,
+        "conveyance_allowance": 0,
+        "medical_allowance": 0,
+        "internet_allowance": 0
+      },
+      {
+        "grade": "g1.1",
+        "designation": "Trainee",
+        "food_allowance": 0,
+        "conveyance_allowance": 0,
+        "medical_allowance": 0,
+        "internet_allowance": 0
+      },
+      {
+        "grade": "g2.0",
+        "designation": "Assoc.Soft.Engineer",
+        "food_allowance": 600,
+        "conveyance_allowance": 800,
+        "medical_allowance": 500,
+        "internet_allowance": 400
+      },
+      {
+        "grade": "g2.1",
+        "designation": "Software.Engineer",
+        "food_allowance": 800,
+        "conveyance_allowance": 1000,
+        "medical_allowance": 800,
+        "internet_allowance": 500
+      },
+      {
+        "grade": "g2.2",
+        "designation": "sr.soft.Engineer",
+        "food_allowance": 1000,
+        "conveyance_allowance": 1100,
+        "medical_allowance": 1000,
+        "internet_allowance": 600
+      },
+      {
+        "grade": "g3.0",
+        "designation": "Technical/Project Lead",
+        "food_allowance": 1100,
+        "conveyance_allowance": 1200,
+        "medical_allowance": 1000,
+        "internet_allowance": 700
+      },
+      {
+        "grade": "g3.1",
+        "designation": "Sr.Technical/Project Lead",
+        "food_allowance": 1200,
+        "conveyance_allowance": 1500,
+        "medical_allowance": 1000,
+        "internet_allowance": 800
+      },
+      {
+        "grade": "g3.2",
+        "designation": "Assc.Technical Manager",
+        "food_allowance": 1300,
+        "conveyance_allowance": 1500,
+        "medical_allowance": 1000,
+        "internet_allowance": 900
+      },
+      {
+        "grade": "g3.3",
+        "designation": "Project Manager",
+        "food_allowance": 1400,
+        "conveyance_allowance": 1600,
+        "medical_allowance": 1000,
+        "internet_allowance": 1000
+      },
+      {
+        "grade": "g3.4",
+        "designation": "Sr.Project Manager",
+        "food_allowance": 1500,
+        "conveyance_allowance": 1700,
+        "medical_allowance": 1000,
+        "internet_allowance": 1100
+      },
+      {
+        "grade": "g4.0",
+        "designation": "Principle Program Manager",
+        "food_allowance": 1600,
+        "conveyance_allowance": 1800,
+        "medical_allowance": 1100,
+        "internet_allowance": 1200
+      }
+    ],
+    "Formula_inputs": {
+      "basic": 0.4,
+      "hra": 0.4,
+      "company_contribution": {
+        "epf": 0.12,
+        "esi": 0.0325
+      },
+      "employee_Deductions": {
+        "epf": 0.12,
+        "esi": 0.0075
+      },
+      "PT": {
+        "condition": "gross>25000",
+        "amount": 200
+      },
+      "ESIC": {
+        "company": {
+          "condition": "gross <= 21000",
+          "percentage": "3.25/100",
+          "else" : 0
+        },
+        "employee": {
+          "condition": "row[gross] <= 21000",
+          "percentage": "0.75/100",
+          "else" : 0
+        }
+      },
+  
+      "EPF" : {
+        "company" : {
+          "condition" : "basic <= 15000",
+          "percentage" : "12/100",
+          "else" : 1800
+        },
+        "employee" : {
+          "condition" : "basic <= 15000",
+          "percentage" : "12/100",
+          "else" : 1800
+        }
+      }
+    },
+    "max_iterations": 1000,
+    "learning_rate": 0.01,
+    "tolerance": 0.00
+  }

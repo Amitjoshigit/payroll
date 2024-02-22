@@ -1,0 +1,13 @@
+# Byte-compiled / optimized files
+__pycache__/
+*.pyc
+
+# Virtual environment
+github_v1_environment/
+
+# Editor specific files
+.vscode/
+*.swp
+
+# Ignore local configuration files
+.env
