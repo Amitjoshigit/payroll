@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fastapi-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fastapi
+  template:
+    metadata:
+      labels:
+        app: fastapi
+    spec:
+      containers:
+        - name: fastapi-container
+          image: amitjoshi5731/payroll-api_fastapi:latest
+          ports:
+            - containerPort: 8000
+          env:
+            - name: MONGO_DB_HOST
+              value: "mongodb-service"
+            - name: MONGO_DB_PORT
+              value: "27017"
+            - name: MONGO_DB_NAME
+              value: "payroll"
+            # Add other environment variables if needed
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fastapi-service
+spec:
+  selector:
+    app: fastapi
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8000
+  type: NodePort

@@ -2,7 +2,7 @@
 from motor.motor_asyncio import AsyncIOMotorClient
 
 # MongoDB setup
-client = AsyncIOMotorClient("mongodb://localhost:27017/")
+client = AsyncIOMotorClient("mongodb://mongodb:27017/")
 db = client["payroll"]  # Change the database name as needed
 
 
