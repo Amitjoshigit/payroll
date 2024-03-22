@@ -1,41 +1,48 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: fastapi-deployment
+  name: payroll-api-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: fastapi
+      app: payroll-api
   template:
     metadata:
       labels:
-        app: fastapi
+        app: payroll-api
     spec:
       containers:
-        - name: fastapi-container
-          image: amitjoshi5731/payroll-api_fastapi:latest
-          ports:
-            - containerPort: 8000
-          env:
-            - name: MONGO_DB_HOST
-              value: "mongodb-service"
-            - name: MONGO_DB_PORT
-              value: "27017"
-            - name: MONGO_DB_NAME
-              value: "payroll"
-            # Add other environment variables if needed
+      - name: payroll-api
+        image: manjukundargi/payroll-api_fastapi
+        ports:
+        - containerPort: 8000
+        env:
+          - name: MONGO_URI
+            value: "mongodb://mongodb:27017/"
+          - name: MONGODB_PORT
+            value: "27017"
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+
 
 ---
+
 apiVersion: v1
 kind: Service
 metadata:
-  name: fastapi-service
+  name: payroll-api-service
 spec:
   selector:
-    app: fastapi
+    app: payroll-api
   ports:
     - protocol: TCP
-      port: 80
+      port: 8000
       targetPort: 8000
+      nodePort: 30000 # You can choose any available port between 30000-32767
   type: NodePort

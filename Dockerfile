@@ -8,7 +8,7 @@ ENV PYTHONUNBUFFERED 1
 # Set the working directory in the container
 WORKDIR /app
 
-# Install dependencies
+# Install dependenciesa
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
